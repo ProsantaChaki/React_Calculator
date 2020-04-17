@@ -6,7 +6,7 @@ import Button from "./Button";
 export default class ButtonMain extends Component{
     handleClick = (buttonName) =>{
         //this.props.clickHandler(buttonName)
-        console.log('working')
+        this.props.buttonClick(buttonName)
     }
 
     render() {

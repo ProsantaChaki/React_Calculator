@@ -1,18 +1,21 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import './css/Button.css'
-import PropTypes from 'prop-types';
 
 export default  class Button extends Component{
+
+    clickEvent = () => {
+        this.props.clickHandler(this.props.name)
+    }
 
     render() {
         const className = [
             'component-button',
             this.props.orange ? 'orange': '',
-            this.props.wide? 'wide': ''
+            this.props.wide ? 'wide': ''
         ]
         return(
             <div className={className.join(' ').trim()}>
-               <button>{this.props.name}</button>
+               <button onClick={this.clickEvent}>{this.props.name}</button>
             </div>
         )
     }

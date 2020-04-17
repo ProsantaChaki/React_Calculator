@@ -6,7 +6,7 @@ export default class Display extends Component{
     render() {
         return(
             <div className={"components-display"}>
-                <div>3.64328</div>
+                <div>{this.props.displayNumber}</div>
             </div>
         );
     }
