@@ -23,11 +23,20 @@ function calculation(firstNumber, secondNumber, operator) {
             return firstNum.div(secondNum).toString();
         }
     }
+    if (operator === "+/-") {
+
+    }
 }
 
 
 export default function calculate(obj, buttonName) {
-    if(isNumber(buttonName) || buttonName ==='.'){
+    if(buttonName==='AC'){
+        obj.firstNumber=null;
+        obj.secondNumber=null;
+        obj.operator = null
+        obj.displayNumber = 0;
+    }
+    else if(isNumber(buttonName) || buttonName ==='.'){
         if(obj.operator === '=') {
             obj.firstNumber=null;
             obj.operator = null
@@ -52,15 +61,63 @@ export default function calculate(obj, buttonName) {
     }
     else {
 
-        if(obj.operator != '=' || obj.operator != null) {
+        if(buttonName === '+/-'){
+            if(obj.secondNumber != null){
+                obj.secondNumber =  (parseFloat(obj.secondNumber)*(-1)).toString()
+                obj.displayNumber = obj.firstNumber+obj.operator+obj.secondNumber;
+            }else if(obj.firstNumber){
+                obj.firstNumber =  (parseFloat(obj.firstNumber)*(-1)).toString()
+                if(obj.operator != null){
+                    obj.displayNumber = obj.firstNumber+obj.operator;
+                }else {
+                    obj.displayNumber = obj.firstNumber
+                }
+            }
+        }else if(buttonName === '%'){
+            if(obj.secondNumber != null){
+                if(obj.operator === 'x'){
+                    obj.firstNumber = parseFloat(obj.firstNumber)*(parseFloat(obj.secondNumber)/100);
+                    obj.operator = null;
+                    obj.secondNumber =null;
+                }
+                else if (obj.operator === '÷'){
+                    obj.firstNumber = parseFloat(obj.firstNumber)/(parseFloat(obj.secondNumber)/100);
+                    obj.operator = null;
+                    obj.secondNumber =null;
+                }
+                else if(obj.operator === '+' || obj.operator === '-'){
+                    obj.secondNumber = parseFloat(obj.secondNumber)/100;
+                    obj.firstNumber = calculation(obj.firstNumber, obj.secondNumber, obj.operator);
+                    obj.operator = null;
+                    obj.secondNumber =null;
+                }
+
+                obj.displayNumber = obj.firstNumber
+
+            } else if(obj.firstNumber != null){
+                obj.firstNumber = parseFloat(obj.firstNumber)/100;
+                obj.displayNumber = obj.firstNumber
+            }
+        }else if(obj.firstNumber === null && buttonName === '-' ) {
+            obj.firstNumber = buttonName;
+            obj.operator = null;
+            obj.displayNumber = obj.firstNumber;
+        }else if((obj.operator === 'x' || obj.operator === '÷') && (obj.secondNumber === null && (buttonName === '-' || buttonName === '+'))){
+                obj.secondNumber = buttonName;
+                obj.displayNumber = obj.firstNumber+obj.operator+obj.secondNumber;
+        }else if(obj.operator != '=' || obj.operator != null) {
             if(obj.secondNumber != null){
                 obj.firstNumber = calculation(obj.firstNumber, obj.secondNumber, obj.operator);
                 obj.secondNumber = null;
+                obj.operator = buttonName;
+                obj.displayNumber =obj.firstNumber + obj.operator;
+            }else if(obj.firstNumber != null){
+                obj.operator = buttonName;
+                obj.displayNumber = obj.firstNumber+obj.operator;
             }
-            //obj.displayNumber = obj.firstNumber;
+
         };
-        obj.operator = buttonName;
-        obj.displayNumber = obj.firstNumber+obj.operator;
+
     }
 
 }

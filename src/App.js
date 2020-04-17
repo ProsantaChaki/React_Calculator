@@ -20,7 +20,7 @@ class App extends Component {
     }
 
   render() {
-        console.log(this.state.firstNumber)
+        //console.log(this.state.firstNumber)
     return (
         <div className="App">
           <h1>Working good</h1>
