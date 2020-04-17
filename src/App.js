@@ -23,9 +23,10 @@ class App extends Component {
         //console.log(this.state.firstNumber)
     return (
         <div className="App">
-          <h1>Working good</h1>
+          <h1>General Calculator</h1>
           <Display displayNumber={this.state.displayNumber}/>
           <ButtonMain buttonClick={this.buttonCLickHandler}/>
+          <small>Developed By Prosanta Kumar Chaki</small>
         </div>
     );
   }
