@@ -13,7 +13,7 @@ export default class ButtonMain extends Component{
         return(
             <div className={"component-button-main"}>
                 <div>
-                    <Button name="AC" clickHandler={this.handleClick} />
+                    <Button name="AC" clickHandler={this.handleClick} AC />
                     <Button name="+/-" clickHandler={this.handleClick} />
                     <Button name="%" clickHandler={this.handleClick} />
                     <Button name="÷" clickHandler={this.handleClick} orange />

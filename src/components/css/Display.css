@@ -5,11 +5,11 @@
     font-weight: bold;
     width: 100%;
     flex: 0 0 auto;
-    height: 60px;
+    height: 80px;
 }
 
 .components-display > div{
-    font-size: 40px;
-    padding: 4px;
+    font-size: 50px;
+    padding: 10px;
     padding-right: 30px;
 }

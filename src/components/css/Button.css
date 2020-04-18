@@ -8,9 +8,9 @@
     background-color: #e0e0e0;
     border: 0;
     font-size: 30px;
-    margin: 0 1px 0 0;
+    margin: 0 1px 0 1px;
     flex: 1 0 auto;
-    padding: 0;
+    padding: 5px;
 }
 
 .component-button.wide {
@@ -24,4 +24,10 @@
 .component-button.orange button {
     background-color: #f5923e;
     color: white;
+}
+
+.component-button.AC button{
+    color: white;
+    background: maroon;
+    font-weight: bold;
 }

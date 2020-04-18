@@ -20,7 +20,10 @@ function calculation(firstNumber, secondNumber, operator) {
             alert("Divide by 0 error");
             return "0";
         } else {
-            return firstNum.div(secondNum).toString();
+            if(firstNum % secondNum!=0){
+                return ((firstNum.div(secondNum)).toFixed(4)).toString();
+            }
+            else return firstNum.div(secondNum).toString();
         }
     }
     if (operator === "+/-") {

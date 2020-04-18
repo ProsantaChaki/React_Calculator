@@ -11,7 +11,9 @@ export default  class Button extends Component{
         const className = [
             'component-button',
             this.props.orange ? 'orange': '',
-            this.props.wide ? 'wide': ''
+            this.props.wide ? 'wide': '',
+            this.props.AC ? 'AC': ''
+
         ]
         return(
             <div className={className.join(' ').trim()}>
