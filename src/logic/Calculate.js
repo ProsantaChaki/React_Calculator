@@ -20,7 +20,7 @@ function calculation(firstNumber, secondNumber, operator) {
             alert("Divide by 0 error");
             return "0";
         } else {
-            if(firstNum % secondNum!=0){
+            if(firstNum % secondNum !== 0){
                 return ((firstNum.div(secondNum)).toFixed(4)).toString();
             }
             else return firstNum.div(secondNum).toString();
@@ -33,7 +33,7 @@ function calculation(firstNumber, secondNumber, operator) {
 
 
 export default function calculate(obj, buttonName) {
-    if(buttonName==='AC'){
+    if(buttonName ==='AC'){
         obj.firstNumber=null;
         obj.secondNumber=null;
         obj.operator = null
@@ -41,7 +41,7 @@ export default function calculate(obj, buttonName) {
     }
     else if(isNumber(buttonName) || buttonName ==='.'){
         if(obj.operator === '=') {
-            obj.firstNumber=null;
+            obj.firstNumber = null;
             obj.operator = null
             obj.displayNumber = '0';
         }
@@ -50,7 +50,7 @@ export default function calculate(obj, buttonName) {
             obj.firstNumber === null ? obj.firstNumber = buttonName :obj.firstNumber =  (obj.firstNumber + buttonName);
             obj.displayNumber = obj.firstNumber;
 
-        }else if(obj.firstNumber != null){
+        }else if(obj.firstNumber !== null){
             obj.secondNumber === null ? obj.secondNumber = buttonName :obj.secondNumber =  (obj.secondNumber + buttonName);
             obj.displayNumber = obj.firstNumber+obj.operator+obj.secondNumber;
         }
@@ -65,19 +65,19 @@ export default function calculate(obj, buttonName) {
     else {
 
         if(buttonName === '+/-'){
-            if(obj.secondNumber != null){
+            if(obj.secondNumber !== null){
                 obj.secondNumber =  (parseFloat(obj.secondNumber)*(-1)).toString()
                 obj.displayNumber = obj.firstNumber+obj.operator+obj.secondNumber;
             }else if(obj.firstNumber){
                 obj.firstNumber =  (parseFloat(obj.firstNumber)*(-1)).toString()
-                if(obj.operator != null){
+                if(obj.operator !== null){
                     obj.displayNumber = obj.firstNumber+obj.operator;
                 }else {
                     obj.displayNumber = obj.firstNumber
                 }
             }
         }else if(buttonName === '%'){
-            if(obj.secondNumber != null){
+            if(obj.secondNumber !== null){
                 if(obj.operator === 'x'){
                     obj.firstNumber = parseFloat(obj.firstNumber)*(parseFloat(obj.secondNumber)/100);
                     obj.operator = null;
@@ -97,7 +97,7 @@ export default function calculate(obj, buttonName) {
 
                 obj.displayNumber = obj.firstNumber
 
-            } else if(obj.firstNumber != null){
+            } else if(obj.firstNumber !== null){
                 obj.firstNumber = parseFloat(obj.firstNumber)/100;
                 obj.displayNumber = obj.firstNumber
             }
@@ -108,13 +108,13 @@ export default function calculate(obj, buttonName) {
         }else if((obj.operator === 'x' || obj.operator === '÷') && (obj.secondNumber === null && (buttonName === '-' || buttonName === '+'))){
                 obj.secondNumber = buttonName;
                 obj.displayNumber = obj.firstNumber+obj.operator+obj.secondNumber;
-        }else if(obj.operator != '=' || obj.operator != null) {
+        }else if(obj.operator !== '=' || obj.operator != null) {
             if(obj.secondNumber != null){
                 obj.firstNumber = calculation(obj.firstNumber, obj.secondNumber, obj.operator);
                 obj.secondNumber = null;
                 obj.operator = buttonName;
-                obj.displayNumber =obj.firstNumber + obj.operator;
-            }else if(obj.firstNumber != null){
+                obj.displayNumber = obj.firstNumber + obj.operator;
+            }else if(obj.firstNumber !== null){
                 obj.operator = buttonName;
                 obj.displayNumber = obj.firstNumber+obj.operator;
             }
